@@ -1,0 +1,40 @@
+Error:
+  type: object
+  properties:
+    detail:
+      oneOf:
+        - type: string
+        - type: array
+          items:
+            type: string
+  required:
+    - detail
+  additionalProperties: false
+
+Library:
+  type: object
+  required:
+    - phone
+    - name
+    - address
+    - email
+    - latitude
+    - longitude
+  properties:
+    phone:
+      type: string
+    name:
+      type: string
+    address:
+      type: string
+    email:
+      type: string
+    latitude:
+      type: float
+    longitude:
+      type: float
+
+Libraries:
+  type: array
+  items:
+    $ref: "#/components/schemas/Library"
