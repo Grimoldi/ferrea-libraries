@@ -17,6 +17,11 @@ spec:
     spec:
       containers:
         - name: ferrea-libraries
-          image: grimoldi/ferrea-libraries:1.0
+          image: grimoldi/ferrea-libraries
           ports:
             - containerPort: 80
+          envFrom:
+            configMapRef:
+              name: ferrea-app
+            secretRef:
+              name: db-connection

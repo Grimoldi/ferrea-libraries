@@ -2,3 +2,5 @@ __pycache__/
 .venv
 venv/
 .git
+
+k8s/2-real-secret.yaml
