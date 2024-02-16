@@ -1,4 +1,4 @@
-from typing import Any, Callable, ContextManager
+from typing import ContextManager
 
 import geopy
 from attr import define
@@ -39,7 +39,7 @@ class LibrariesOperation:
         Returns:
             Library | None: the library if found, else None.
         """
-        query = f"MATCH (l:Library) WHERE l.name = $library_name RETURN l"
+        query = "MATCH (l:Library) WHERE l.name = $library_name RETURN l"
         params = {"library_name": name}
 
         with self.db as session:
@@ -77,7 +77,7 @@ class LibrariesOperation:
             "longitude": location.longitude,
         }
         with self.db as session:
-            library = session.write(query, params)
+            session.write(query, params)
 
         return Library(data.name, data.address, location, data.email, data.phone)  # type: ignore
 
